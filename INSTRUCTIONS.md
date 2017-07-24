@@ -26,15 +26,17 @@ Leveraging the IBM Bluemix DevOps Services, we are able to quickly clone the cod
 
   **Note:** Use the default settings for Region / Organization / Space on the Bluemix landing page.
 
-  3. Once you have named your application, click the deploy button to begin the deploy process to Bluemix. During this process, Bluemix will automatically build and deploy our starter application based on the Github repository that we accessed at the start of the lab.
-
-  4. Once the application has finished deploying, you will see a "Success!" message. At this point, scroll to the top of the page and select "Dashboard" from the header bar.
+  3. Once you have named your application, click the deploy button to begin the deploy process to Bluemix. During this process, Bluemix will automatically build and deploy our starter application based on the Github repository that we accessed at the start of the lab. Following shows the application successfully created in your bluemix account with associated services.
 
   ![deploy-success](instructions/deploy-success.png)
 
+  4. Click into the `Delivery Pipeline` and you will see the app build and delivery progress. Once the application has finished deploying, you will see a green "Stage Passed" label on `Deploy Stage`. At this point, scroll to the top of the page and select "Dashboard" from the header bar.
+
+  ![deploy-finish](instructions/deploy-finish.png)
+
   5. Test Out the new app. Now that we have deployed our application to Bluemix, the next step is to test the application in it's current state.
 
-  6. Click on the application icon to go into the dashboard for our Image Analysis app. On the `Overview` tab you will see the details for your application. To the right of the application title, you will see a `View app` button. Click on the button and you will be taken to your running application.
+  6. If you are in `Delivery Pipeline`, then click on the back button on top left near `Tool Chain` to go back to the application overview. On the `Overview` tab you will see the details for your application. To the right of the application title, you will see a `View app` button. Click on the button and you will be taken to your running application.
 
   ![app-route](instructions/app-route.png)
 
@@ -50,20 +52,34 @@ Leveraging the IBM Bluemix DevOps Services, we are able to quickly clone the cod
 
   1. So far, we have deployed our pre built starter application to Bluemix. We are going to show how easy it is to add additional Watson services to our applications using Bluemix.
 
+  Click on the top left corner to open up the Bluemix menu. You will then need to click on `Apps`. Then click on `Dashboard` as shown in the following screenshot.
+
+  ![bluemix-menu](instructions/bluemix-menu.png)
+
   On the Bluemix Dashboard, scroll down to find your Image Analysis application within the "Applications" section. From here, click on the application to open the application homepage.
 
   ![dashboard-app](instructions/dashboard-app.png)
 
-  2. Within the application homepage, we are able to see what services we have already included. To do this, select the `Connections` item from left navigation. You will notice that we already have Text to Speech and Visual Recognition built into the application. We are now going to add a third service into the application.
-To do this, click the `Connect new` button on the Connections tab
+  2. Within the application homepage, we are able to see what services we have already included in the `Connections` box. You will notice that we already have Text to Speech and Visual Recognition built into the application. We are now going to add a third service into the application.
+To do this, click the `Connect New` button inside the `Connections` box
 
   ![app-details](instructions/app-details.png)
 
-  3. From the list of Watson services, select the `Language Translator` service and add it to your application. For the purposes of this lab, all of the default settings of the service will work, so when presented with the Language Translator details page, select the green `Create` button to proceed.
+  3. From the list of Watson services, select the `Language Translator` service and add it to your application. 
 
   ![add-service](instructions/add-service.png)
 
+  Make sure you choose the Watson Vision application we have created in the `Connect To` dropdown box on the left. For the purposes of this lab, all of the default settings of the service will work, so when presented with the Language Translator details page, click on the blue `Create` button to proceed.
+
+  ![add-service2](instructions/add-service2.png)
+
   **Note:** you may be prompted to restage your application at this point. This is required in order to rebuild the application with the new Language Translator service that we have added. Select "Restage" to proceed.
+
+  ![restage](instructions/restage.png)
+
+  You will see the following screen while the app is restaging. Once it's finished restaging, it will show as running.
+
+  ![restaging](instructions/restaging.png)
 
 We are going to demonstrate how easy it is to use the Watson services on Bluemix to add functionality to existing applications. Our current application can identify images and read out that identification using audio. However let’s say that we wanted to be able to identify these images for a wider user base, which requires translation into other languages.
 
@@ -71,14 +87,29 @@ Luckily, we’ve already started the process to do this. To fully implement the 
 
 ## Modify the existing application
 
-  1. Let’s edit our source code. Back on the application home page in Bluemix, you will see a link to the IBM Bluemix Devops Jazz Hub repository, and a button to **Edit Code**.
-  Click on **Edit Code.**
+  1. Let’s edit our source code. There are a couple of ways to do this. You can either git clone the code from Bluemix, makes changes and then do a git push. Or, you can use the web based editor. We will demonstrate the latter in here.
+  
+  Back on the application home page in Bluemix, you will see a link to the `Continuous Delivery` services. When we deployed the app into Bluemix, the `Tool Chain` will already be enabled. Click on the button saying `View toolchain`. This will take you to the Bluemix DevOps overview for the application. Click on `Eclipse Orion Web IDE` to edit code.
 
-  2. Clicking on Edit Code will take you to the Jazz Hub repository, which will allow us to edit and push new versions of our code to the application.
+  2. The Web IDE interface will allow us to edit and push new versions of our code to the application.
 
-  Within the Github repository, navigate to routes folder and select **File -> New -> File** and name the new file `language-translator.js`
+  Within the editor on the left hand side, navigate to routes folder and open the file `language-translator.js`
 
-  3. Open up `language-translator.js` and copy the code below:  
+  ![eclipse](instructions/eclipse.png)
+
+  3. Now you will notice that the code requires username and password section to be updated. These are the credentials for the translator api. You can find out about your service credential by going into `Services` -> `Dashboard` and then click on the `Language Translator` service we have created.
+
+  ![services](instructions/services.png)
+
+  Then click on `Service Credentials` on the left hand side. You will then need to create a new service credential by clicking on `New credential`. You can use all defaults.
+
+  ![new-credential](instructions/new-credential.png)
+
+  Then you will see the credential had been created. You can click on `View credentials` to see the api endpoint, username and password.
+
+  ![view-cred](instructions/view-cred.png)
+
+  Following is the code snippet in case you do not have the file.
 
 ```js
 'use strict';
@@ -110,7 +141,11 @@ module.exports.translate = function(req, res, next) {
 
   4. Click on File -> Save or press Crt+S.
 
-  5. Open up your `app.js` and uncomment the line 31. That will add the support for translation with the newly created `routes/language-translator.js`.
+  5. Open up your `app.js` and uncomment the line 33 or 34 where it says
+  ```js
+  app.post('/translate', require('./routes/language-translator').translate);
+  ```
+  That will add the support for translation with the newly created `routes/language-translator.js`.
 
   6. Click on File -> Save or press Crt+S.
 
@@ -124,11 +159,11 @@ module.exports.translate = function(req, res, next) {
 
   ![commit](instructions/commit.png)
 
-  3. Click **Sync** to send your changes from this workspace to the main repository and trigger a deploy of your app.
+  3. Once the commit is done, You can click on **Push All** to send your changes from this workspace to the main repository and trigger a deploy of your app.
 
   ![sync](instructions/sync.png)
 
-  4. Finally, Click on **Build and Deploy** to see the deploy process.
+  4. Finally, You can check the deployment process in the `Delivery Pipeline`.
 
   ![deploy-button](instructions/build-and-deploy.png)
 
