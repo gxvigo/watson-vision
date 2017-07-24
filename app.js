@@ -31,7 +31,7 @@ app.get('/voices', textToSpeech.voices);
 app.post('/speak', textToSpeech.speak);
 
 //below route is to be changed
-app.post('/translate', require('./routes/language-translator').translate);
+//app.post('/translate', require('./routes/language-translator').translate);
 
 // error-handler settings
 require('./config/error-handler')(app);
