@@ -1,0 +1,12 @@
+#initial training
+curl -X POST -F "fruitbowl_positive_examples=@fruitbowl.zip" \
+-F "negative_examples=@not-fruit-bowls.zip" -F "name=fruitbowls" \
+"https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=d94f7340f5451f87369eea0258f1070536eb6d8d&version=2016-05-20"
+
+#check status of training
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=d94f7340f5451f87369eea0258f1070536eb6d8d&version=2016-05-20"
+
+#test a new image with the classifier
+#curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={api_key}&url=https://github.com/watson-developer-cloud/doc-tutorial-downloads/raw/master/visual-recognition/fruitbowl.jpg&version=2016-05-19&classifier_ids={classifier_id},default"
+
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=d94f7340f5451f87369eea0258f1070536eb6d8d&url=https://github.com/watson-developer-cloud/doc-tutorial-downloads/raw/master/visual-recognition/fruitbowl.jpg&version=2016-05-19&classifier_ids=fruitbowls_311767317,default"
