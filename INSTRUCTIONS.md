@@ -161,7 +161,7 @@ module.exports.translate = function(req, res, next) {
 
   3. Once the commit is done, You can click on **Push All** to send your changes from this workspace to the main repository and trigger a deploy of your app.
 
-  ![sync](instructions/sync.png)
+  ![sync](instructions/push.png)
 
   4. Finally, You can check the deployment process in the `Delivery Pipeline`.
 
