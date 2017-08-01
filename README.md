@@ -11,6 +11,9 @@ Demo: [http://image-analysis.mybluemix.net/](http://image-analysis.mybluemix.net
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/image-analysis)
 
+If the Deploy button doesn't work (grey out) check that the URL in the page has the following query parameter: ibm:yp:us-south
+e.g.: https://console.bluemix.net/devops/setup/deploy?repository=https://github.com/andyhyh/watson-vision&env_id=ibm:yp:us-south
+
 
 ## Running locally
   The application uses [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.com/) so you will have to download and install them as part of the steps below.
