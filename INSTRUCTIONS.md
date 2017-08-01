@@ -170,6 +170,8 @@ module.exports.translate = function(req, res, next) {
 
   4. Finally, You can check the deployment process in the `Delivery Pipeline`.
 
+**Note:** If opening the Continuos Deliver service, you won't be able to see the 'pipeline' menu, click on 'Start here' button (either button is fine) and than the 'arrow left' icon next to Pipeline or Toolchains 
+
   ![deploy-button](instructions/build-and-deploy.png)
 
 **Note:** While this may show as overly complicated, we show it here to illustrate you can have exactly the same source management practices you could have your local environment connected to a Git repository, in the Bluemix DevOps environment.
