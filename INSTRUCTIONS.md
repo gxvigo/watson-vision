@@ -36,6 +36,8 @@ e.g.: https://console.bluemix.net/devops/setup/deploy?repository=https://github.
   4. Click into the `Delivery Pipeline` and you will see the app build and delivery progress. Once the application has finished deploying, you will see a green "Stage Passed" label on `Deploy Stage`. At this point, scroll to the top of the page and select "Dashboard" from the header bar.
 
   ![deploy-finish](instructions/deploy-finish.png)
+  
+**Note:** If the deploy stage fails it's possible that you have already deployed Visual Recognition service in your account. With free tier, it's possible to deploy just one instance of the service  
 
   5. Test Out the new app. Now that we have deployed our application to Bluemix, the next step is to test the application in it's current state.
 
