@@ -11,6 +11,7 @@ So let’s get started. The first thing to do is to build out the shell of our a
   3. Log in with your IBM ID (the ID used to create your Bluemix account)
 
 **Note:** The confirmation email from Bluemix mail take up to 1 hour.
+**Note:** Not all services are available in all regions. Continuos Delivery (DevOps) is one of this. Before continuing be sure that you hava a Space created in the US region.
 
 ## Deploy this sample application in Bluemix and Test it
 
@@ -57,11 +58,11 @@ e.g.: https://console.bluemix.net/devops/setup/deploy?repository=https://github.
 
   1. So far, we have deployed our pre built starter application to Bluemix. We are going to show how easy it is to add additional Watson services to our applications using Bluemix.
 
-  Click on the top left corner to open up the Bluemix menu. You will then need to click on `Apps`. Then click on `Dashboard` as shown in the following screenshot.
+  Go back to Bluemix console and click on the top left corner to open up the Bluemix menu. You will then need to click on `Apps`. Then click on `Dashboard` as shown in the following screenshot.
 
   ![bluemix-menu](instructions/bluemix-menu.png)
 
-  On the Bluemix Dashboard, scroll down to find your Image Analysis application within the "Applications" section. From here, click on the application to open the application homepage.
+  On the Bluemix Dashboard, scroll down to find your Image Analysis (watson-visio-.....) application within the "Applications" section. From here, click on the application to open the application homepage.
 
   ![dashboard-app](instructions/dashboard-app.png)
 
@@ -94,7 +95,7 @@ Luckily, we’ve already started the process to do this. To fully implement the 
 
   1. Let’s edit our source code. There are a couple of ways to do this. You can either git clone the code from Bluemix, makes changes and then do a git push. Or, you can use the web based editor. We will demonstrate the latter in here.
   
-  Back on the application home page in Bluemix, you will see a link to the `Continuous Delivery` services. When we deployed the app into Bluemix, the `Tool Chain` will already be enabled. Click on the button saying `View toolchain`. This will take you to the Bluemix DevOps overview for the application. Click on `Eclipse Orion Web IDE` to edit code.
+  Back on the application (watson-vision-......) home page in Bluemix, you will see a link to the `Continuous Delivery` services. When we deployed the app into Bluemix, the `Tool Chain` will already be enabled. Click on the button saying `View toolchain`. This will take you to the Bluemix DevOps overview for the application. Click on `Eclipse Orion Web IDE` to edit code.
 
   2. The Web IDE interface will allow us to edit and push new versions of our code to the application.
 
@@ -102,7 +103,7 @@ Luckily, we’ve already started the process to do this. To fully implement the 
 
   ![eclipse](instructions/eclipse.png)
 
-  3. Now you will notice that the code requires username and password section to be updated. These are the credentials for the translator api. You can find out about your service credential by going into `Services` -> `Dashboard` and then click on the `Language Translator` service we have created.
+  3. Now you will notice that the code requires username and password section to be updated. These are the credentials for the translator api. You can find out about your service credential by going to Bluemix Dashboard (`Services` -> `Dashboard`) and then click on the `Language Translator` service we have created.
 
   ![services](instructions/services.png)
 
@@ -192,6 +193,9 @@ While the default Visual Recognition does a good job classifying many common obj
   [Fruit Bowls - Positive](https://watson-labs.mybluemix.net/data/fruitbowl.zip)
   <br/>
   [Not Fruit Bowls - Negative](https://watson-labs.mybluemix.net/data/not-fruit-bowls.zip)
+  
+** Note: ** instruction below uses a programmatic approach to the training, it's possible to use a web tool to achieve the same result. Here the link to the tool: http://visual-recognition-tooling.mybluemix.net/
+It requires an API Key, the value can be retrieved by the credentials created in your instance of Visual Recognition service
 
 2. Using the zips downloaded above execute the classify call to create a new instnce of a classifier.
 
