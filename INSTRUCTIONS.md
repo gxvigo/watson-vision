@@ -193,9 +193,11 @@ While the default Visual Recognition does a good job classifying many common obj
   [Fruit Bowls - Positive](https://watson-labs.mybluemix.net/data/fruitbowl.zip)
   <br/>
   [Not Fruit Bowls - Negative](https://watson-labs.mybluemix.net/data/not-fruit-bowls.zip)
-  
+
+
 **Note:** instruction below uses a programmatic approach to the training, it's possible to use a web tool to achieve the same result. Here the link to the tool: http://visual-recognition-tooling.mybluemix.net/
 It requires an API Key, the value can be retrieved by the credentials created in your instance of Visual Recognition service
+
 
 2. Using the zips downloaded above execute the classify call to create a new instnce of a classifier.
 
